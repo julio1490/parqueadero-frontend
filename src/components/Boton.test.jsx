@@ -1,8 +1,9 @@
+
+import { describe, test, expect, jest } from '@jest/globals';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Boton from './Boton';
 
 describe('Pruebas unitarias del componente Boton', () => {
-
   test('1. Muestra el texto correctamente', () => {
     render(<Boton texto="Registrar vehículo" />);
 
@@ -30,5 +31,5 @@ describe('Pruebas unitarias del componente Boton', () => {
       screen.getByRole('button', { name: 'Guardar' })
     ).toBeInTheDocument();
   });
-
 });
+
