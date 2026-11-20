@@ -1,0 +1,35 @@
+name: Sprint 3 - Frontend CI
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  frontend:
+    name: Verificar frontend React
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Verificar codigo con ESLint
+        run: npm run lint
+
+      - name: Compilar frontend
+        run: npm run build
